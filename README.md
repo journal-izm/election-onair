@@ -1650,6 +1650,15 @@ event: cue.changed    data: {"cue_id":7}
 <p align="center"><img src="docs/img/dev_folder.png" alt="저장소 폴더 구조" width="100%"></p>
 <p align="center"><sub>저장소 폴더 구조</sub></p>
 
+### 협업 규칙 (PR 리뷰 생략)
+| 규칙 | 내용 |
+|---|---|
+| 담당 파일 | 영역 번호대로 파일을 맡는다. 남의 파일을 고쳐야 하면 Slack에 먼저 알린다 |
+| 브랜치 | `main`(발표용) ← `dev`(합치는 곳) ← `feature/영역코드-이름` (예: `feature/04-article-gen`) |
+| 합치기 | 팀원 리뷰 없이 **본인이 `dev`에 합친다**. 기록이 남도록 PR로 합친다 |
+| 합치기 전 확인 | ① 내 PC에서 서버가 켜지는지 ② `.env`·`*.db`가 올라가지 않는지 ③ 커밋·PR 제목에 번호 (예: `FN-05-02 승인 API`) |
+| `main` | 리허설·발표 전에만 강사가 `dev`를 `main`에 합친다 |
+| API 계약 변경 | 선관위 API(API-02-01·02-02) 형식을 바꾸기 전에 상대 저장소 담당자에게 Slack으로 알린다 |
 ### 실행 (터미널 3개)
 ```bash
 uvicorn nec_server.main:app --port 8000
