@@ -11,7 +11,7 @@
 
 | 항목 | 내용 |
 |---|---|
-| 버전 | v1.1 (2026-11-24) |
+| 버전 | v1.2 (2026-11-25) |
 | 일정 | 예비발표 11/25 · 11/27 → 최종 발표 11/30 (20분 실시간 개표방송) |
 | 설계 문서 | 아래 8개 항목을 눌러 펼쳐 보세요 (저장소별 문서는 각 저장소 README) · [Google Drive 폴더](https://drive.google.com/drive/folders/1_cBwKNgYjq68y6a8KJ1PvdjE484eh3fE) |
 
@@ -98,7 +98,16 @@
 | 오프닝 멘트 음성 | 1 | 30초 | 미리 승인한 원고 → TTS |
 
 ### 개표 시나리오와 기사 분량
-가상의 「2026 한빛시장 모의선거」 — 5개 구(동구, 서구, 남구, 북구, 중구), 후보 3명(기호1 김하늘, 기호2 이바다, 기호3 박산), 모두 가상.
+가상의 「2026 한빛시장 모의선거」 — 5개 구(별빛구, 심해구, 사막구, 성운구, 궤도구), 후보 3명(기호1 윤별하, 기호2 류해온, 기호3 오로라), 모두 가상.
+
+#### 후보 설정
+| 기호 | 후보 (정당) | 콘셉트 · 슬로건 | 이력 | 공약 | 색 |
+|---|---|---|---|---|---|
+| 1 | 윤별하 (은하공화연합) | 은하 함대 조종사 · “흩어진 별들을 하나의 항로로” | 은하 함대 정찰기 조종사 출신 / 소행성대 구조 작전 지휘 / 우주정거장 '은하1호' 사령관 / 은하공화연합 대표 | 구와 구를 5분 안에 잇는 '초공간 셔틀' 노선 / 구마다 함대식 재난 구조대 / 청소년 조종사 학교 설립 | #FF2BD6 |
+| 2 | 류해온 (심해행성연맹) | 바다 행성의 수호자 · “가장 깊은 바다에서 온 약속” | 바다 행성 '아쿠아리스' 출신 / 심해 도시 방어막 설계 기술자 / 해저 잠수 함대 '해온호' 함장 / 심해행성연맹 대표 | 바닷속 쓰레기 수거 로봇 함대 / 해저 연구 도시 유치로 일자리 / 모든 행성 어린이 바다교실 무료 | #00E5FF |
+| 3 | 오로라 (무소속) | 사막 행성의 외계 통역사 · “모든 종족의 목소리에 답하겠습니다” | 사막 행성의 외계 언어 통역사 / 정체불명 신호 '로라 신호' 해독 / 보조 로봇 '피코'와 우주 교역소 운영 / 첫 출마 | 외계 주민도 쓰는 '만능 번역 민원 창구' / 로봇이 24시간 답하는 구청 민원 / 우주 교역 시장 개설 | #A6FF00 |
+
+> 후보·정당·지역은 모두 가상입니다. 우주 SF 분위기로 만들었지만 실존 영화·작품의 인물·행성 이름, 대사, 로고, 음악은 쓰지 않습니다. 색은 네온색이라 어두운 배경(방송 화면·차트)에서 쓰고, 흰 배경 글자에는 진한색을 씁니다.
 
 | 이벤트 | 뜻 | 발생 조건 | 우선순위 |
 |---|---|---|---|
@@ -776,9 +785,9 @@ DB: 선관위 · 사용 기능: FN-02-01 · 사용 API: API-02-01
 
 | 컬럼 | 타입 | 키 | NULL | 설명 |
 |---|---|---|---|---|
-| `region_code` | VARCHAR(10) | PK | N | EAST / WEST … |
+| `region_code` | VARCHAR(10) | PK | N | STAR / DEEP … |
 | `election_id` | VARCHAR(20) | FK | N | → election |
-| `name` | VARCHAR(20) |  | N | 동구 등 |
+| `name` | VARCHAR(20) |  | N | 별빛구 등 |
 | `electors` | INTEGER |  | N | 지역 선거인 수 |
 | `sort_order` | INTEGER |  | N | 표시 순서 |
 
@@ -890,8 +899,8 @@ DB: 방송국 · 사용 기능: FN-03-01, FN-06-02 · 사용 API: API-06-01, API
 
 | 컬럼 | 타입 | 키 | NULL | 설명 |
 |---|---|---|---|---|
-| `region_code` | VARCHAR(10) | PK | N | ALL / EAST … |
-| `name` | VARCHAR(20) |  | N | 전체 / 동구 |
+| `region_code` | VARCHAR(10) | PK | N | ALL / STAR … |
+| `name` | VARCHAR(20) |  | N | 전체 / 별빛구 |
 | `electors` | INTEGER |  | N | 선거인 수 |
 | `sort_order` | INTEGER |  | N | 표시 순서 |
 
@@ -1256,8 +1265,8 @@ electionId = HANBIT-2026
 ```
 응답 200
 ```json
-{ "election": {...}, "regions": [ {"code":"EAST","name":"동구","electors":82000} ],
-  "candidates": [ {"id":1,"ballot_no":1,"name":"김하늘","color":"#2F6FDE"} ] }
+{ "election": {...}, "regions": [ {"code":"STAR","name":"별빛구","electors":82000} ],
+  "candidates": [ {"id":1,"ballot_no":1,"name":"윤별하","color":"#FF2BD6"} ] }
 ```
 #### API-02-02 `GET /nec/v1/elections/{electionId}/results?since_seq={n}` — 개표 집계 변경분
 권한: X-API-KEY · 관련 기능 FN-02-02, FN-02-03, FN-03-01 · 테이블 TBL-02-04, TBL-02-05, TBL-02-06
@@ -1269,7 +1278,7 @@ since_seq = 마지막으로 받은 seq (처음은 0)
 응답 200
 ```json
 { "last_seq": 42, "status": "COUNTING",
-  "regions": [ {"seq":42,"code":"EAST","counted_rate":51.3,
+  "regions": [ {"seq":42,"code":"STAR","counted_rate":51.3,
      "votes": {"1":15210,"2":14877,"3":2100}} ] }
 ```
 #### API-02-03 `POST /nec/v1/sim/control` — 시뮬레이터 제어
@@ -1314,7 +1323,7 @@ since_seq = 마지막으로 받은 seq (처음은 0)
 응답 200
 ```json
 { "state": "OK", "last_seq": 42, "last_at": "20:31:05", "fail_count": 0,
-  "recent_events": [ {"type":"LEAD_CHANGE","region":"EAST"} ] }
+  "recent_events": [ {"type":"LEAD_CHANGE","region":"STAR"} ] }
 ```
 #### API-03-02 `POST /api/sync/run` — 즉시 수신
 권한: DESK · 관련 기능 FN-03-03 · 테이블 TBL-03-05, TBL-03-03
@@ -1345,8 +1354,8 @@ status = DRAFT | REJECTED | SUBMITTED | APPROVED (생략 시 전체)
 ```
 응답 200
 ```json
-[ { "article_id": 12, "title": "동구 개표율 50% 돌파…", "status": "DRAFT",
-    "event_type": "RATE_MILESTONE", "region": "EAST", "created_at": "20:31:08" } ]
+[ { "article_id": 12, "title": "별빛구 개표율 50% 돌파…", "status": "DRAFT",
+    "event_type": "RATE_MILESTONE", "region": "STAR", "created_at": "20:31:08" } ]
 ```
 #### API-04-02 `GET /api/articles/{articleId}` — 기사 상세
 권한: REPORTER·DESK · 관련 기능 FN-04-04 · 테이블 TBL-04-01, TBL-03-04, TBL-05-01
@@ -1458,19 +1467,19 @@ event: article.rejected  data: {"article_id":9, "comment":"..."}
 응답 200
 ```json
 { "counted_rate": 48.2, "updated_at": "20:31:05",
-  "candidates": [ {"id":1,"name":"김하늘","votes":120345,"rate":44.1,"rank":1,"winner_flag":null} ],
-  "regions": [ {"code":"EAST","leader_id":1,"counted_rate":51.3} ] }
+  "candidates": [ {"id":1,"name":"윤별하","votes":120345,"rate":44.1,"rank":1,"winner_flag":null} ],
+  "regions": [ {"code":"STAR","leader_id":1,"counted_rate":51.3} ] }
 ```
 #### API-06-02 `GET /api/public/results/{regionCode}` — 지역별 결과
 권한: 없음(공개) · 관련 기능 FN-06-02, FN-07-04 · 테이블 TBL-03-02, TBL-03-03
 
 요청
 ```json
-regionCode = EAST | WEST | … | ALL
+regionCode = STAR | DEEP | DUNE | NEBULA | ORBIT | ALL
 ```
 응답 200
 ```json
-{ "region": "동구", "counted_rate": 51.3,
+{ "region": "별빛구", "counted_rate": 51.3,
   "candidates": [ {"id":1,"votes":15210,"rate":46.4}, ... ] }
 ```
 #### API-06-03 `GET /api/public/articles?region={code}&limit=20` — 출고 기사 목록
@@ -1482,7 +1491,7 @@ region 생략 시 전체
 ```
 응답 200
 ```json
-[ { "article_id": 12, "title": "...", "body": "...", "region": "EAST", "approved_at": "20:32:40" } ]
+[ { "article_id": 12, "title": "...", "body": "...", "region": "STAR", "approved_at": "20:32:40" } ]
 ```
 #### API-06-04 `GET /api/public/stream` — 실시간 알림 (SSE)
 권한: 없음(공개) · 관련 기능 FN-06-03 · 테이블 TBL-03-03, TBL-04-01
@@ -1494,7 +1503,7 @@ EventSource 연결 유지
 응답 200
 ```json
 event: results.updated   data: {"last_seq":43}
-event: article.published data: {"article_id":12, "region":"EAST"}
+event: article.published data: {"article_id":12, "region":"STAR"}
 ```
 
 </details>
@@ -1527,7 +1536,7 @@ event: article.published data: {"article_id":12, "region":"EAST"}
 응답 200
 ```json
 { "kind": "TTS", "queue_id": 7, "audio": "/static/tts/12.mp3",
-  "script": "...", "region_code": "EAST", "duration_sec": 24.5 }
+  "script": "...", "region_code": "STAR", "duration_sec": 24.5 }
 또는 { "kind": "AVATAR", "queue_id": 9, "video": "/static/avatar/15.mp4", "region_code": "ALL" }
 또는 { "kind": "VIDEO", "cue_id": 7, "file": "/static/media/interview_1.mp4" }
 ```
@@ -1687,9 +1696,10 @@ STATION_CODE=K uvicorn station_server.main:app --port 8102
 
 | 버전 | 일자 | 내용 |
 |---|---|---|
-| v0.1 | 2026-11-24 | 초안 작성 |
-| v0.2 | 2026-11-24 | 1차 검토(번호 정합성 자동 검사): 요구·기능·화면·API·테이블 상호 참조 확인, 연결이 빠진 NFR-02·NFR-05를 해당 기능에 연결, 큐시트 합계 20분(1,200초) 확인 |
-| v0.3 | 2026-11-24 | 2차 검토(내용·예외 흐름): 뉴스룸 알림 API(API-04-05)를 공개 알림과 분리, 송출 화면 인증을 데스크 로그인으로 단순화, 오래된 기사 건너뛰기·동시 승인 방지·TTS 재생성·기자 배정·당선 지연 대비 규칙 추가, 오프닝 음성 저장 위치(media_asset) 명시 |
-| v1.0 | 2026-11-24 | 3차 검토(문서 렌더링·문서 간 일치): 이미지 겹침·잘림 수정, 문서 8종의 번호·용어(송고·승인·출고) 통일 확인, Google Docs 변환 후 이미지 표시 확인 |
-| v1.1 | 2026-11-24 | 개발환경 결정 반영: SQLite, LAN+클라우드(시연 모드 REQ-02-05), 팀 공용 OpenAI 키, 립싱크 아바타 섞어 쓰기(REQ-07-06, FN-07-07, TBL-07-06, BR-11) |
+| v0.1 | 2026-11-25 | 초안 작성 |
+| v0.2 | 2026-11-25 | 1차 검토(번호 정합성 자동 검사): 요구·기능·화면·API·테이블 상호 참조 확인, 연결이 빠진 NFR-02·NFR-05를 해당 기능에 연결, 큐시트 합계 20분(1,200초) 확인 |
+| v0.3 | 2026-11-25 | 2차 검토(내용·예외 흐름): 뉴스룸 알림 API(API-04-05)를 공개 알림과 분리, 송출 화면 인증을 데스크 로그인으로 단순화, 오래된 기사 건너뛰기·동시 승인 방지·TTS 재생성·기자 배정·당선 지연 대비 규칙 추가, 오프닝 음성 저장 위치(media_asset) 명시 |
+| v1.0 | 2026-11-25 | 3차 검토(문서 렌더링·문서 간 일치): 이미지 겹침·잘림 수정, 문서 8종의 번호·용어(송고·승인·출고) 통일 확인, Google Docs 변환 후 이미지 표시 확인 |
+| v1.1 | 2026-11-25 | 개발환경 결정 반영: SQLite, LAN+클라우드(시연 모드 REQ-02-05), 팀 공용 OpenAI 키, 립싱크 아바타 섞어 쓰기(REQ-07-06, FN-07-07, TBL-07-06, BR-11) |
+| v1.2 | 2026-11-25 | 후보·지역 콘셉트 확정: 우주 SF 분위기의 가상 후보 3명(윤별하·류해온·오로라)과 이력·공약, 네온 후보색, 5개 구 이름(별빛구·심해구·사막구·성운구·궤도구, 코드 STAR·DEEP·DUNE·NEBULA·ORBIT), 방송 화면 차트를 어두운 배경으로 변경 |
 
