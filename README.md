@@ -8,6 +8,7 @@
 <p align="center"><img src="docs/img/concept.png" alt="서비스 흐름 — 승인 한 번으로 웹과 방송이 동시에 바뀜" width="100%"></p>
 <p align="center"><sub>서비스 흐름 — 승인 한 번으로 웹과 방송이 동시에 바뀜</sub></p>
 
+
 | 항목 | 내용 |
 |---|---|
 | 버전 | v1.0 (2026-11-24) |
@@ -30,6 +31,7 @@
 
 <p align="center"><img src="docs/img/numbering.png" alt="영역 코드별 요구·기능·화면·API·테이블" width="100%"></p>
 <p align="center"><sub>영역 코드별 요구·기능·화면·API·테이블</sub></p>
+
 
 | 코드 | 영역 | 설명 |
 |---|---|---|
@@ -83,6 +85,7 @@
 ### 20분 방송 구성
 <p align="center"><img src="docs/img/cuesheet.png" alt="20분 큐시트" width="100%"></p>
 <p align="center"><sub>20분 큐시트</sub></p>
+
 ### 미리 만들 영상·음성
 | 종류 | 개수 | 길이 | 만드는 방법 |
 |---|---|---|---|
@@ -126,6 +129,7 @@
 ### 일정과 역할
 <p align="center"><img src="docs/img/schedule.png" alt="P1 일정" width="100%"></p>
 <p align="center"><sub>P1 일정</sub></p>
+
 | 역할(제안) | 맡는 일 | 영역 |
 |---|---|---|
 | 백엔드 A | 선관위 서버·시뮬레이터·시나리오 | 02 |
@@ -277,6 +281,7 @@
 
 <p align="center"><img src="docs/img/func_tree.png" alt="기능 구조도" width="100%"></p>
 <p align="center"><sub>기능 구조도</sub></p>
+
 ### 영역 01 · 계정·인증
 기자 3·데스크 2 계정 로그인과 역할별 접근
 
@@ -348,6 +353,7 @@ M·K 방송국 서버가 선관위 데이터를 받아 각자 DB에 저장하고
 ### 기사 상태 전이
 <p align="center"><img src="docs/img/article_state.png" alt="기사 상태 — DRAFT → SUBMITTED → APPROVED / REJECTED" width="100%"></p>
 <p align="center"><sub>기사 상태 — DRAFT → SUBMITTED → APPROVED / REJECTED</sub></p>
+
 | 상태 | 뜻 | 누가 바꾸나 | 다음 상태 |
 |---|---|---|---|
 | DRAFT | AI 초안, 기자 배정 | 시스템(FN-04-01) | SUBMITTED |
@@ -388,6 +394,7 @@ M·K 방송국 서버가 선관위 데이터를 받아 각자 DB에 저장하고
 
 <p align="center"><img src="docs/img/screen_flow.png" alt="화면 흐름도" width="100%"></p>
 <p align="center"><sub>화면 흐름도</sub></p>
+
 | 화면 ID | 화면명 | 사용자 | URL | 관련 기능 |
 |---|---|---|---|---|
 | SCR-01-01 | 로그인 | 기자·데스크 | /login | FN-01-01 FN-01-02 |
@@ -414,6 +421,7 @@ M·K 방송국 서버가 선관위 데이터를 받아 각자 DB에 저장하고
 
 <p align="center"><img src="docs/img/SCR-01-01.png" alt="SCR-01-01 로그인" width="100%"></p>
 <p align="center"><sub>SCR-01-01 로그인</sub></p>
+
 | 번호 | 요소 | 설명 |
 |---|---|---|
 | 1 | 아이디 | reporter1~3, desk1~2 |
@@ -436,6 +444,7 @@ M·K 방송국 서버가 선관위 데이터를 받아 각자 DB에 저장하고
 
 <p align="center"><img src="docs/img/SCR-02-01.png" alt="SCR-02-01 선관위 개표 시뮬레이터" width="100%"></p>
 <p align="center"><sub>SCR-02-01 선관위 개표 시뮬레이터</sub></p>
+
 | 번호 | 요소 | 설명 |
 |---|---|---|
 | 1 | 진행 상태 | 대기 / 개표 중 / 일시정지 / 종료 |
@@ -459,6 +468,7 @@ M·K 방송국 서버가 선관위 데이터를 받아 각자 DB에 저장하고
 
 <p align="center"><img src="docs/img/SCR-03-01.png" alt="SCR-03-01 개표 수신 모니터" width="100%"></p>
 <p align="center"><sub>SCR-03-01 개표 수신 모니터</sub></p>
+
 | 번호 | 요소 | 설명 |
 |---|---|---|
 | 1 | 수신 상태 표시등 | 정상(초록)·지연(노랑)·실패(빨강) |
@@ -482,6 +492,7 @@ M·K 방송국 서버가 선관위 데이터를 받아 각자 DB에 저장하고
 
 <p align="center"><img src="docs/img/SCR-04-01.png" alt="SCR-04-01 기자 대시보드 (내 기사)" width="100%"></p>
 <p align="center"><sub>SCR-04-01 기자 대시보드 (내 기사)</sub></p>
+
 | 번호 | 요소 | 설명 |
 |---|---|---|
 | 1 | 상태 탭 | 초안·반려·송고됨·출고됨 |
@@ -505,6 +516,7 @@ AI 초안을 사실 확인하며 고친 뒤 데스크로 송고
 
 <p align="center"><img src="docs/img/SCR-04-02.png" alt="SCR-04-02 기사 편집·송고" width="100%"></p>
 <p align="center"><sub>SCR-04-02 기사 편집·송고</sub></p>
+
 | 번호 | 요소 | 설명 |
 |---|---|---|
 | 1 | 근거 데이터 | 기사를 만든 이벤트와 개표 수치 (사실 확인용) |
@@ -529,6 +541,7 @@ AI 초안을 사실 확인하며 고친 뒤 데스크로 송고
 
 <p align="center"><img src="docs/img/SCR-05-01.png" alt="SCR-05-01 데스크 승인 대기 목록" width="100%"></p>
 <p align="center"><sub>SCR-05-01 데스크 승인 대기 목록</sub></p>
+
 | 번호 | 요소 | 설명 |
 |---|---|---|
 | 1 | 대기 목록 | 송고 시각·기자·지역·제목, 오래된 순 |
@@ -551,6 +564,7 @@ AI 초안을 사실 확인하며 고친 뒤 데스크로 송고
 
 <p align="center"><img src="docs/img/SCR-05-02.png" alt="SCR-05-02 기사 검토·승인/반려" width="100%"></p>
 <p align="center"><sub>SCR-05-02 기사 검토·승인/반려</sub></p>
+
 | 번호 | 요소 | 설명 |
 |---|---|---|
 | 1 | 근거 데이터 | 이벤트·최신 개표 수치 비교 (기사 숫자와 다르면 경고) |
@@ -574,6 +588,7 @@ AI 초안을 사실 확인하며 고친 뒤 데스크로 송고
 
 <p align="center"><img src="docs/img/SCR-06-01.png" alt="SCR-06-01 실시간 개표 웹 (메인)" width="100%"></p>
 <p align="center"><sub>SCR-06-01 실시간 개표 웹 (메인)</sub></p>
+
 | 번호 | 요소 | 설명 |
 |---|---|---|
 | 1 | 전체 개표율 | 진행 막대와 갱신 시각 |
@@ -597,6 +612,7 @@ AI 초안을 사실 확인하며 고친 뒤 데스크로 송고
 
 <p align="center"><img src="docs/img/SCR-06-02.png" alt="SCR-06-02 지역별 상세" width="100%"></p>
 <p align="center"><sub>SCR-06-02 지역별 상세</sub></p>
+
 | 번호 | 요소 | 설명 |
 |---|---|---|
 | 1 | 지역 선택 | 5개 구 탭 |
@@ -619,6 +635,7 @@ OBS가 캡처해 방송하는 화면. 영상·AI 앵커·지역 차트·자막�
 
 <p align="center"><img src="docs/img/SCR-07-01.png" alt="SCR-07-01 방송 송출 화면 (1920×1080)" width="100%"></p>
 <p align="center"><sub>SCR-07-01 방송 송출 화면 (1920×1080)</sub></p>
+
 | 번호 | 요소 | 설명 |
 |---|---|---|
 | 1 | AI 앵커 영역 | 앵커 영상 + TTS 음성 |
@@ -643,6 +660,7 @@ OBS가 캡처해 방송하는 화면. 영상·AI 앵커·지역 차트·자막�
 
 <p align="center"><img src="docs/img/SCR-07-02.png" alt="SCR-07-02 큐시트·송출 제어" width="100%"></p>
 <p align="center"><sub>SCR-07-02 큐시트·송출 제어</sub></p>
+
 | 번호 | 요소 | 설명 |
 |---|---|---|
 | 1 | 큐시트 진행 | 10개 구간, 현재 구간 강조 |
@@ -669,15 +687,19 @@ OBS가 캡처해 방송하는 화면. 영상·AI 앵커·지역 차트·자막�
 
 <p align="center"><img src="docs/img/erd_nec.png" alt="선관위 DB ERD" width="100%"></p>
 <p align="center"><sub>선관위 DB ERD</sub></p>
+
 <p align="center"><img src="docs/img/erd_station_a.png" alt="방송국 DB ① 계정·수신·기사·승인" width="100%"></p>
 <p align="center"><sub>방송국 DB ① 계정·수신·기사·승인</sub></p>
+
 <p align="center"><img src="docs/img/erd_station_b.png" alt="방송국 DB ② 방송 송출" width="100%"></p>
 <p align="center"><sub>방송국 DB ② 방송 송출</sub></p>
+
 <details>
 <summary><b>방송국 DB 전체 ERD</b></summary>
 
 <p align="center"><img src="docs/img/erd_station.png" alt="방송국 DB 전체" width="100%"></p>
 <p align="center"><sub>방송국 DB 전체</sub></p>
+
 
 </details>
 
@@ -1118,6 +1140,7 @@ DB: 방송국 · 사용 기능: FN-07-06 · 사용 API: API-07-04, API-07-05
 
 <p align="center"><img src="docs/img/api_map.png" alt="API 지도" width="100%"></p>
 <p align="center"><sub>API 지도</sub></p>
+
 ### API 목록
 | API ID | 서버 | 메서드 | 경로 | 이름 | 권한 |
 |---|---|---|---|---|---|
@@ -1153,6 +1176,7 @@ DB: 방송국 · 사용 기능: FN-07-06 · 사용 API: API-07-04, API-07-05
 
 <p align="center"><img src="docs/img/api_01.png" alt="영역 01 API" width="100%"></p>
 <p align="center"><sub>영역 01 API</sub></p>
+
 #### API-01-01 `POST /api/auth/login` — 로그인
 권한: 없음 · 관련 기능 FN-01-01 · 테이블 TBL-01-01
 
@@ -1194,6 +1218,7 @@ DB: 방송국 · 사용 기능: FN-07-06 · 사용 API: API-07-04, API-07-05
 
 <p align="center"><img src="docs/img/api_02.png" alt="영역 02 API" width="100%"></p>
 <p align="center"><sub>영역 02 API</sub></p>
+
 #### API-02-01 `GET /nec/v1/elections/{electionId}` — 선거 기본정보
 권한: X-API-KEY · 관련 기능 FN-02-01, FN-02-03 · 테이블 TBL-02-01, TBL-02-02, TBL-02-03
 
@@ -1250,6 +1275,7 @@ since_seq = 마지막으로 받은 seq (처음은 0)
 
 <p align="center"><img src="docs/img/api_03.png" alt="영역 03 API" width="100%"></p>
 <p align="center"><sub>영역 03 API</sub></p>
+
 #### API-03-01 `GET /api/sync/status` — 수신 상태
 권한: DESK · 관련 기능 FN-03-03 · 테이블 TBL-03-05, TBL-03-04
 
@@ -1281,6 +1307,7 @@ since_seq = 마지막으로 받은 seq (처음은 0)
 
 <p align="center"><img src="docs/img/api_04.png" alt="영역 04 API" width="100%"></p>
 <p align="center"><sub>영역 04 API</sub></p>
+
 #### API-04-01 `GET /api/articles?status={status}` — 내 기사 목록
 권한: REPORTER · 관련 기능 FN-04-03 · 테이블 TBL-04-01
 
@@ -1348,6 +1375,7 @@ event: article.rejected  data: {"article_id":9, "comment":"..."}
 
 <p align="center"><img src="docs/img/api_05.png" alt="영역 05 API" width="100%"></p>
 <p align="center"><sub>영역 05 API</sub></p>
+
 #### API-05-01 `GET /api/desk/articles?status=SUBMITTED` — 승인 대기 목록
 권한: DESK · 관련 기능 FN-05-01 · 테이블 TBL-04-01
 
@@ -1391,6 +1419,7 @@ event: article.rejected  data: {"article_id":9, "comment":"..."}
 
 <p align="center"><img src="docs/img/api_06.png" alt="영역 06 API" width="100%"></p>
 <p align="center"><sub>영역 06 API</sub></p>
+
 #### API-06-01 `GET /api/public/results` — 전체 개표 현황
 권한: 없음(공개) · 관련 기능 FN-06-01 · 테이블 TBL-03-01, TBL-03-02, TBL-03-03
 
@@ -1447,6 +1476,7 @@ event: article.published data: {"article_id":12, "region":"EAST"}
 
 <p align="center"><img src="docs/img/api_07.png" alt="영역 07 API" width="100%"></p>
 <p align="center"><sub>영역 07 API</sub></p>
+
 #### API-07-01 `GET /api/onair/cuesheet` — 큐시트 조회
 권한: DESK · 관련 기능 FN-07-01 · 테이블 TBL-07-01, TBL-07-03
 
@@ -1520,6 +1550,7 @@ event: cue.changed    data: {"cue_id":7}
 
 <p align="center"><img src="docs/img/sys_arch.png" alt="시스템 구성도" width="100%"></p>
 <p align="center"><sub>시스템 구성도</sub></p>
+
 | 구성 요소 | 역할 | 영역 |
 |---|---|---|
 | NEC API 서버 | 선거 기본정보·개표 변경분 제공 | 02 |
@@ -1532,10 +1563,13 @@ event: cue.changed    data: {"cue_id":7}
 
 <p align="center"><img src="docs/img/seq_sync.png" alt="개표 수신 → 기사 초안 자동 생성" width="100%"></p>
 <p align="center"><sub>개표 수신 → 기사 초안 자동 생성</sub></p>
+
 <p align="center"><img src="docs/img/seq_approve.png" alt="송고 → 승인 → 웹 게시 · AI 앵커 낭독" width="100%"></p>
 <p align="center"><sub>송고 → 승인 → 웹 게시 · AI 앵커 낭독</sub></p>
+
 <p align="center"><img src="docs/img/seq_elected.png" alt="당선 확정 → 당선자 영상 편성" width="100%"></p>
 <p align="center"><sub>당선 확정 → 당선자 영상 편성</sub></p>
+
 ### 실시간 처리 방식
 | 구간 | 방식 | 이유 |
 |---|---|---|
@@ -1545,6 +1579,7 @@ event: cue.changed    data: {"cue_id":7}
 
 <p align="center"><img src="docs/img/sys_deploy.png" alt="방송 당일 강의장 LAN 구성" width="100%"></p>
 <p align="center"><sub>방송 당일 강의장 LAN 구성</sub></p>
+
 | 서버 | 포트 | 환경 변수 (.env) |
 |---|---|---|
 | nec_server | 8000 | NEC_DB_URL, ADMIN_KEY, SCENARIO |
@@ -1561,6 +1596,7 @@ event: cue.changed    data: {"cue_id":7}
 
 <p align="center"><img src="docs/img/dev_stack.png" alt="권장 개발 환경" width="100%"></p>
 <p align="center"><sub>권장 개발 환경</sub></p>
+
 ### 항목별 권장안
 | 항목 | 권장 | 다른 후보 | 이유 |
 |---|---|---|---|
@@ -1575,6 +1611,7 @@ event: cue.changed    data: {"cue_id":7}
 
 <p align="center"><img src="docs/img/dev_folder.png" alt="저장소 폴더 구조" width="100%"></p>
 <p align="center"><sub>저장소 폴더 구조</sub></p>
+
 ### 실행 (터미널 3개)
 ```bash
 uvicorn nec_server.main:app --port 8000
