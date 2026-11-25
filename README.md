@@ -11,9 +11,9 @@
 
 | 항목 | 내용 |
 |---|---|
-| 버전 | v1.3 (2026-11-25) |
+| 버전 | v1.4 (2026-11-25) |
 | 일정 | 예비발표 11/25 · 11/27 → 최종 발표 11/30 (20분 실시간 개표방송) |
-| 설계 문서 | 아래 8개 항목을 눌러 펼쳐 보세요 (저장소별 문서는 각 저장소 README) (저장소별 문서는 각 저장소 README) (저장소별 문서는 각 저장소 README) · [Google Drive 폴더](https://drive.google.com/drive/folders/1_cBwKNgYjq68y6a8KJ1PvdjE484eh3fE) |
+| 설계 문서 | 아래 8개 항목을 눌러 펼쳐 보세요 (저장소별 문서는 각 저장소 README) (저장소별 문서는 각 저장소 README) · [Google Drive 폴더](https://drive.google.com/drive/folders/1_cBwKNgYjq68y6a8KJ1PvdjE484eh3fE) |
 
 ## 🗂️ 저장소 구성
 
@@ -1879,6 +1879,19 @@ STATION_CODE=K uvicorn station_server.main:app --port 8102
 
 </details>
 
+## 🛠 실행할 때 알아 둘 점
+
+| 상황 | 해결 |
+|---|---|
+| 방송국 서버가 Ctrl+C로 안 꺼짐 | 열린 화면(개표 웹·수신 모니터·송출 화면)의 실시간 연결(SSE)이 끝나길 기다리는 중. 8101·8102 브라우저 탭을 닫거나 Ctrl+C를 한 번 더. 켤 때 --timeout-graceful-shutdown 2를 붙이면 2초 뒤 꺼짐 |
+| 서버 켜는 순서 | 선관위(8000) → M(8101) → K(8102). 수신 모니터(/monitor)가 '● 정상'인지 확인한 뒤 선관위 ▶ 시작 |
+| 초기 데이터(seed) | 선관위: python seed.py / 방송국: python seed.py --env .env.m (PowerShell에서는 ENV_FILE=… 앞붙이기가 안 됨). 두 서버 모두 처음 켤 때 데이터가 없으면 자동 실행 |
+| 방송국 키 | 선관위 .env에 STATION_KEY_M · STATION_KEY_K를 직접 정해 두고, 방송국 .env.m · .env.k의 NEC_API_KEY에 같은 값. 수신 모니터에 '응답 401'이면 키가 다른 것 |
+| DB 파일 칸 | STATION_DB_URL은 비워 두거나 파일 이름만(station_m.db / station_k.db). M·K가 같은 파일을 쓰면 데이터가 섞임 |
+| 다른 방송국 링크 | OTHER_STATION_URL — M은 http://localhost:8102, K는 http://localhost:8101 |
+
+방송국 실행 명령: `uvicorn app.main:app --port 8101 --env-file .env.m --timeout-graceful-shutdown 2`
+
 ## 🧪 테스트 실행 가이드
 
 설계 문서의 1차 확인 테스트케이스 61개를 실제로 돌려 보는 순서·명령·기대 결과: **[docs/TEST_GUIDE.md](docs/TEST_GUIDE.md)** (준비 → 자동 테스트 → 단계별 수동 테스트 → 결과 기록표)
@@ -1894,4 +1907,5 @@ STATION_CODE=K uvicorn station_server.main:app --port 8102
 | v1.1 | 2026-11-25 | 개발환경 결정 반영: SQLite, LAN+클라우드(시연 모드 REQ-02-05), 팀 공용 OpenAI 키, 립싱크 아바타 섞어 쓰기(REQ-07-06, FN-07-07, TBL-07-06, BR-11) |
 | v1.2 | 2026-11-25 | 후보·지역 콘셉트 확정: 우주 SF 분위기의 가상 후보 3명(윤별하·류해온·오로라)과 이력·공약, 네온 후보색, 5개 구 이름(별빛구·심해구·사막구·성운구·궤도구, 코드 STAR·DEEP·DUNE·NEBULA·ORBIT), 방송 화면 차트를 어두운 배경으로 변경 |
 | v1.3 | 2026-11-25 | 1차 확인 테스트케이스 추가: 8개 문서마다 마지막 장에 테스트 표(시나리오·인수·기능·화면·데이터·API·연동·환경), 요구사항 정의서에 요구사항 → 확인 테스트 추적표, 구현 단계(1~5)별 통과 기준 |
+| v1.4 | 2026-11-25 | 실행할 때 알아 둘 점 추가(강의장 PC 실제 실행 결과): 서버 끄기(SSE 연결·--timeout-graceful-shutdown), 켜는 순서, seed --env, 방송국 키 고정, DB 파일 칸, 다른 방송국 링크 |
 
