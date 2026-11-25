@@ -13,7 +13,7 @@
 |---|---|
 | 버전 | v1.3 (2026-11-25) |
 | 일정 | 예비발표 11/25 · 11/27 → 최종 발표 11/30 (20분 실시간 개표방송) |
-| 설계 문서 | 아래 8개 항목을 눌러 펼쳐 보세요 (저장소별 문서는 각 저장소 README) · [Google Drive 폴더](https://drive.google.com/drive/folders/1_cBwKNgYjq68y6a8KJ1PvdjE484eh3fE) |
+| 설계 문서 | 아래 8개 항목을 눌러 펼쳐 보세요 (저장소별 문서는 각 저장소 README) (저장소별 문서는 각 저장소 README) · [Google Drive 폴더](https://drive.google.com/drive/folders/1_cBwKNgYjq68y6a8KJ1PvdjE484eh3fE) |
 
 ## 🗂️ 저장소 구성
 

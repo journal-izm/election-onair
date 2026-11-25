@@ -141,9 +141,8 @@ python tools/check.py --env .env.m tts "문장"   # TTS 연결
 1. 선관위 관리 화면에서 **⟲ 초기화**
 2. 방송국 서버 두 개를 끄고(Ctrl+C) `python seed.py --reset`을 M·K 각각 실행
    ```powershell
-   $env:ENV_FILE=".env.m"; python seed.py --reset
-   $env:ENV_FILE=".env.k"; python seed.py --reset
-   Remove-Item Env:ENV_FILE
+   python seed.py --env .env.m --reset
+   python seed.py --env .env.k --reset
    ```
 3. 방송국 서버 다시 켜기 → 큐시트 화면에서 **⟲ 초기화**
 
