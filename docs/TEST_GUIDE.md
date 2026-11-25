@@ -139,7 +139,8 @@ python tools/check.py --env .env.m tts "문장"   # TTS 연결
 ### 1-6. 처음부터 다시 하기 (리허설 전 초기화)
 
 1. 선관위 관리 화면에서 **⟲ 초기화**
-2. 방송국 서버 두 개를 끄고(Ctrl+C) `python seed.py --reset`을 M·K 각각 실행
+2. 방송국 수신 모니터(/monitor, 데스크)에서 **방송국 개표 초기화** 버튼 — M·K 각각. 선관위만 초기화하면 방송국이 "선관위가 초기화되었습니다" 경고를 띄우고 새 개표를 받지 않습니다.
+   (서버를 끈 상태라면 아래처럼 `seed.py --reset`으로도 됩니다)
    ```powershell
    python seed.py --env .env.m --reset
    python seed.py --env .env.k --reset
