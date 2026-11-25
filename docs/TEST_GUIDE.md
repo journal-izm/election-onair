@@ -91,11 +91,11 @@ uvicorn app.main:app --port 8000
 
 # 터미널 ② M 방송국
 cd station-onair; .venv\Scripts\activate
-uvicorn app.main:app --port 8101 --env-file .env.m
+uvicorn app.main:app --port 8101 --env-file .env.m --timeout-graceful-shutdown 2
 
 # 터미널 ③ K 방송국
 cd station-onair; .venv\Scripts\activate
-uvicorn app.main:app --port 8102 --env-file .env.k
+uvicorn app.main:app --port 8102 --env-file .env.k --timeout-graceful-shutdown 2
 ```
 
 방송국 서버는 처음 켤 때 초기 데이터(계정 5 · 후보 자료 12 · 큐시트 10)를 자동으로 넣습니다.
@@ -409,7 +409,7 @@ cd ..\station-onair; .venv\Scripts\activate; python -m pytest -q
 ### TC-ENV-04 강의장 LAN 접속
 - **절차**
   1. 서버 PC에서 `ipconfig` → IPv4 주소 확인 (예: 192.168.0.23)
-  2. 방송국 서버를 `uvicorn app.main:app --host 0.0.0.0 --port 8101 --env-file .env.m` 로 다시 켬
+  2. 방송국 서버를 `uvicorn app.main:app --host 0.0.0.0 --port 8101 --env-file .env.m --timeout-graceful-shutdown 2` 로 다시 켬
   3. 같은 와이파이의 다른 PC·휴대폰에서 http://192.168.0.23:8101/
 - **기대 결과:** 개표 웹이 열림. 안 열리면 Windows 방화벽에서 Python 허용(개인 네트워크)
 - ☐ 통과 ☐ 실패 메모:
@@ -657,6 +657,7 @@ cd ..\station-onair; .venv\Scripts\activate; python -m pytest -q
 | 송출 화면에서 소리가 안 남 | 화면을 한 번 클릭했는지, 브라우저 탭 음소거가 아닌지. 키가 없으면 브라우저 음성(한국어 음성이 설치돼 있어야 함) |
 | 송출 화면이 로그인 화면으로 바뀜 | 데스크로 로그인하지 않았음 (OBS는 상호작용으로 로그인) |
 | `database is locked` | 같은 DB 파일을 쓰는 서버가 두 개 켜져 있음 → M·K의 STATION_CODE가 다른지 확인 |
+| 방송국 서버가 Ctrl+C로 안 꺼짐 | 열린 화면(개표 웹·송출 화면)의 실시간 연결이 끝나길 기다리는 중 → **Ctrl+C를 한 번 더** 누르거나 터미널 휴지통 아이콘. 켤 때 `--timeout-graceful-shutdown 2`를 붙이면 2초 뒤 꺼짐 |
 | 처음부터 다시 하고 싶음 | [1-6 초기화](#1-6-처음부터-다시-하기-리허설-전-초기화) |
 
 오류가 나면 **터미널의 마지막 20줄**을 복사해 두면 원인을 찾기 쉽습니다.
